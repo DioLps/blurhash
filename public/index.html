@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      img {
+        width: 100%;
+        height: auto;
+        position: absolute;
+      }
+
+      .lazy-img {
+        position: relative;
+        min-height: 300px;
+        margin-bottom: 1rem;
+        display: flex;
+        justify-content: center;
+      }
+
+      .lazy-img__placeholder {
+        z-index: 1;
+      }
+
+      .lazy-img__placeholder--hide {
+        display: none;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <input
+      type="file"
+      name="img-file"
+      placeholder="Select an img"
+      id="img-file"
+      accept="image/*"
+      onchange="submit(event)"
+    />
+
+    <section class="galleary">
+      <div class="lazy-img">
+        <img
+          src="#"
+          class="lazy-img__placeholder"
+          id="placeholder-img"
+          loading="lazy"
+        />
+        <img src="#" class="lazy-img__img" id="loaded-img" loading="lazy" />
+      </div>
+    </section>
+
+    <button onclick="onLoadRequest()">load img</button>
+
+    <script src="/blurhash-image.js" defer></script>
+    <script src="/img-loader.js" defer></script>
+  </body>
+</html>
